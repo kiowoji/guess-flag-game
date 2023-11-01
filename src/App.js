@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import GamePage from "./pages/GamePage";
+import GreetingPage from "./pages/GreetingPage";
+import WinnersBoard from "./pages/WinnersBoard";
 
 function App() {
+  const [playerName, setPlayerName] = useState("");
+  const [gameMode, setGameMode] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <GreetingPage
+                setPlayerName={setPlayerName}
+                setGameMode={setGameMode}
+              />
+            }
+          />
+          <Route
+            path="/new-game"
+            element={
+              <GamePage timerMode={false} playerName={playerName} />
+            }
+          />
+          <Route
+            path="/timer-game"
+            element={
+              <GamePage
+                timerMode={gameMode === "timer-game"}
+                playerName={playerName}
+                gameMode={gameMode}
+                setGameMode={setGameMode}
+                setPlayerName={setPlayerName}
+              />
+            }
+          />
+          <Route
+            path="/board"
+            element={<WinnersBoard playerName={playerName} />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
