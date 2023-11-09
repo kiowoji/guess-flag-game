@@ -19,17 +19,17 @@ function Greeting({ setPlayerName, setGameMode }) {
   };
 
   return (
-    <div className="container">
+    <div className="container greeting">
       <h1 className="main-text">Ласкаво просимо до гри Вгадай прапор!</h1>
       <p className="main-text">Вгадайте прапори 197 країн світу:</p>
-      <p className="main-text">Від Авганістану до Зімбабве</p>
+      <p className="main-text">Від Андорри 🇦🇩 до Зімбабве 🇿🇼</p>
       <Link to="/new-game" className="link" onClick={handleStartGame}>
         <button className="new-game">Звичайна гра</button>
       </Link>
       <Link to="/timer-game" className="link" onClick={handleStartTimerGame}>
         <button className="timer-game">Гра з таймером</button>
       </Link>
-      <Link to="/board">
+      <Link to="/board" className="link">
         <button className="records">Дошка рекордів</button>
       </Link>
     </div>

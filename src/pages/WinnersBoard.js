@@ -22,15 +22,15 @@ const WinnersBoard = ({ playerName }) => {
   }, []);
 
   return (
-    <div>
+    <div className="container board">
       <h2>Топ-10 переможців:</h2>
-      <ol>
+      <ol className="board-list">
         {leaderboard.map((player, index) => (
-          <li key={index}>{` ${player.name} - ${player.score}/20`}</li>
+          <li className="board-item" key={index}>{` ${player.name} - ${player.score}/30`}</li>
         ))}
       </ol>
-      <Link to="/">
-        <button>На головну</button>
+      <Link className="link" to="/">
+        <button className="btn">На головну</button>
       </Link>
     </div>
   );
